@@ -1,6 +1,6 @@
 import { useState } from "react";
 import GameBoard from "./GameBoard";
-export default function Player({ name, symbol }) {
+export default function Player({ name, symbol, isActive }) {
   const [isEditing, setIsEditing] = useState(false);
   const [nameValue, setNameValue] = useState(name);
 
@@ -23,7 +23,7 @@ export default function Player({ name, symbol }) {
 
   return (
     <>
-      <li>
+      <li className={isActive ? "active" : ""}>
         <span className="player">
           {isEditing ? getName : showName}
           <span className="player-symbol">{symbol}</span>
