@@ -1,12 +1,14 @@
 import { useState } from "react";
 import GameBoard from "./GameBoard";
-export default function Player({ name, symbol, isActive }) {
+export default function Player({ name, symbol, isActive, onNameChange }) {
   const [isEditing, setIsEditing] = useState(false);
   const [nameValue, setNameValue] = useState(name);
 
   function handleClick() {
-    //setIsEditing(!isEditing);
     setIsEditing((editing) => !editing);
+    if (isEditing) {
+      onNameChange(symbol, nameValue);
+    }
   }
 
   const getName = (
